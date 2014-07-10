@@ -23,7 +23,7 @@ run_tag::
 
 run_tests:
 	@echo Running Tests...
-	@coverage run --source=librarian -- manage.py test librarian
+	@coverage run --source=librarian -- manage.py test -v 2 librarian
 
 test_report:
 	@coverage report

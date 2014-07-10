@@ -30,5 +30,6 @@ setup(name='django-librarian',
       zip_safe=False,
       install_requires=[
         'django >= 1.6',
+        'django-files >= 1.1',
       ],
       )
