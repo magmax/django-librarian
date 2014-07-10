@@ -61,3 +61,60 @@ class book_has_isbn_13(test.TestCase):
         b = Book.objects.filter()[0]
         self.assertEqual(b, book)
         self.assertEqual(b.isbn_13, book.isbn_13)
+
+
+class book_has_publisher(test.TestCase):
+    def test_basic(self):
+        book = Book()
+
+        book.publisher = 'foo'
+        book.save()
+
+        b = Book.objects.filter()[0]
+        self.assertEqual(b, book)
+        self.assertEqual(b.publisher, book.publisher)
+
+
+class book_has_year(test.TestCase):
+    def test_basic(self):
+        book = Book()
+
+        book.year = 1492
+        book.save()
+
+        b = Book.objects.filter()[0]
+        self.assertEqual(b, book)
+        self.assertEqual(b.year, book.year)
+
+
+class book_has_language(test.TestCase):
+    def test_basic(self):
+        book = Book()
+
+        book.language = 'english'
+        book.save()
+
+        b = Book.objects.filter()[0]
+        self.assertEqual(b, book)
+        self.assertEqual(b.language, book.language)
+
+    def _test_language_is_stored_lower_case(self):
+        book = Book()
+
+        book.language = 'EnGlIsH'
+        book.save()
+
+        b = Book.objects.filter()[0]
+        self.assertEqual(b, book)
+        self.assertEqual(b.language.lower(), book.language)
+
+
+class book_has_authors(test.TestCase):
+    def test_no_authors(self):
+        book = Book()
+
+        book.save()
+
+        b = Book.objects.filter()[0]
+
+        self.assertEqual([], list(b.authors.values()))

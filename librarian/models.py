@@ -38,3 +38,22 @@ class Book(models.Model):
         null=True,
         blank=True,
     )
+
+    publisher = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+
+    year = models.IntegerField(
+        null=True,
+        blank=True,
+    )
+
+    language = models.CharField(
+        max_length=20,
+        null=True,
+        blank=True,
+    )
+
+    authors = models.ManyToManyField(Author)

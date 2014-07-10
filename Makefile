@@ -26,7 +26,7 @@ run_tests:
 	@coverage run --source=librarian -- manage.py test -v 2 librarian
 
 test_report:
-	@coverage report
+	@coverage report -m
 
 clear_coverage:
 	@echo Cleaning previous coverage...
