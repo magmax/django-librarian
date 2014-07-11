@@ -6,5 +6,5 @@ from librarian import models
 class AuthorFactory(factory.DjangoModelFactory):
     FACTORY_FOR = models.Author
 
-    name = 'Lope'
-    surname = 'de Vega'
+    name = 'Francisco'
+    surname = 'Quevedo'

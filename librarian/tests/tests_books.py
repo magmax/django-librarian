@@ -129,3 +129,15 @@ class book_has_authors(test.TestCase):
 
         self.assertEqual([author], list(book.authors.filter()))
 
+    def test_several_authors(self):
+        author1 = AuthorFactory.create(name='Francisco', surname='Quevedo')
+        author2 = AuthorFactory.create(name='Lope', surname='de Vega')
+        self.book.authors.add(author1)
+        self.book.authors.add(author2)
+        self.book.save()
+
+        book = Book.objects.filter()[0]
+
+        self.assertEqual(set([author1, author2]),
+                         set(book.authors.filter()))
+
