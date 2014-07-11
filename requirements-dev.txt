@@ -8,3 +8,4 @@ doublex >= 1.8.1
 pexpect >= 3.2
 releaseme
 wheel
+factory_boy

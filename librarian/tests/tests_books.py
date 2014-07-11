@@ -2,6 +2,7 @@ from django import test
 from django.db.utils import IntegrityError
 
 from librarian.models import Book
+from factories import AuthorFactory
 
 
 class book_creation(test.TestCase):
@@ -110,11 +111,21 @@ class book_has_language(test.TestCase):
 
 
 class book_has_authors(test.TestCase):
+    def setUp(self):
+        self.book = Book()
+        self.book.save()
+
     def test_no_authors(self):
-        book = Book()
+        book = Book.objects.filter()[0]
 
-        book.save()
+        self.assertEqual([], list(book.authors.values()))
 
-        b = Book.objects.filter()[0]
+    def test_one_author(self):
+        author = AuthorFactory.create()
+        self.book.authors.add(author)
+        self.book.save()
 
-        self.assertEqual([], list(b.authors.values()))
+        book = Book.objects.filter()[0]
+
+        self.assertEqual([author], list(book.authors.filter()))
+
