@@ -99,7 +99,7 @@ class book_has_language(test.TestCase):
         self.assertEqual(b, book)
         self.assertEqual(b.language, book.language)
 
-    def _test_language_is_stored_lower_case(self):
+    def test_language_is_stored_lower_case(self):
         book = Book()
 
         book.language = 'EnGlIsH'
@@ -140,4 +140,3 @@ class book_has_authors(test.TestCase):
 
         self.assertEqual(set([author1, author2]),
                          set(book.authors.filter()))
-

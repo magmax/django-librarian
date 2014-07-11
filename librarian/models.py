@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 
 class Author(models.Model):
@@ -57,3 +59,9 @@ class Book(models.Model):
     )
 
     authors = models.ManyToManyField(Author)
+
+
+@receiver(pre_save, sender=Book)
+def pre_save_books(instance, **kwargs):
+    if instance.language is not None:
+        instance.language = instance.language.lower()
