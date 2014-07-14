@@ -38,6 +38,11 @@ class book_has_a_title(test.TestCase):
         with self.assertRaises(IntegrityError):
             self.book.save()
 
+    def test_shows_title(self):
+        self.book.title = 'Foo bar'
+
+        self.assertEqual(self.book.title, str(self.book))
+
 
 class book_has_description(test.TestCase):
     def test_basic(self):

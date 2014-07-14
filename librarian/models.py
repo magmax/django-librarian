@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+# from django.contrib.auth.models import User
 
 
 class Author(models.Model):
@@ -59,6 +60,10 @@ class Book(models.Model):
     )
 
     authors = models.ManyToManyField(Author)
+#    owner = models.ForeignKey(User)
+
+    def __str__(self):
+        return '{title}'.format(**self.__dict__)
 
 
 @receiver(pre_save, sender=Book)
