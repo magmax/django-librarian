@@ -9,3 +9,5 @@ coverage.xml
 dist/
 build/
 db.sqlite3
+/attachments
+**/static/

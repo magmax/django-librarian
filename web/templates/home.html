@@ -1,0 +1,63 @@
+{% extends "logged.html"%}
+
+{% block title %}django-files demosite{% endblock %}
+
+
+{% block content %}
+
+{% load attachments %}
+
+<div class="container">
+  {% for book in books %}
+  <div class="row">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ book.title }} <small>{{ book.year }} {{ book.publisher }}</small></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-3 col-md-offset-2">
+            <ul class="list-unstyled">
+              {% for author in book.authors.filter %}
+              <li><b>{{ author.surname }}</b>, {{ author.name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col-md-5">
+            <dl class="dl-horizontal">
+              {% if book.year %}
+              <dt>Year:</dt>
+              <dd>{{ book.year }}</dd>
+              {% endif %}
+
+              {% if book.publisher %}
+              <dt>Publisher:</dt>
+              <dd>{{ book.publisher }}</dd>
+              {% endif %}
+
+              {% if book.isbn_13 %}
+              <dt>ISBN:</dt>
+              <dd>{{ book.isbn_13 }}</dd>
+              {% endif %}
+            </dl>
+          </div>
+        </div>
+        {% if book.description %}
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+          {{ book.description }}
+          </div>
+        </div>
+        {% endif %}
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            {%   render_attachment_list for book %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

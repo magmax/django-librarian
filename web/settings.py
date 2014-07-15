@@ -2,15 +2,8 @@
 Django settings for django-librarian project.
 
 Only for testing and example proposes.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -84,3 +77,11 @@ STATIC_URL = '/static/'
 
 
 SITE_ID="1"
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'web', 'templates'),
+)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'web', 'static', 'vendor', 'bootstrap', 'dist'),
+)

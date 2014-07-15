@@ -7,6 +7,8 @@ from .models import Book, Author
 class BookAdmin(admin.ModelAdmin):
     inlines = [AttachmentInlines]
 
+    list_filter = ('publisher', 'year', 'language')
+    date_hierarchy = "created"
     # def save_formset(self, request, form, formset, change):
     #     instances = formset.save(commit=False)
     #     for obj in instances:

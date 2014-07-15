@@ -24,6 +24,9 @@ class Author(models.Model):
 
 class Book(models.Model):
 
+    class Meta:
+        pass
+
     title = models.CharField(
         max_length=200,
         null=False,
@@ -61,6 +64,9 @@ class Book(models.Model):
 
     authors = models.ManyToManyField(Author)
 #    owner = models.ForeignKey(User)
+
+    created = models.DateTimeField("date/time created", auto_now_add=True)
+    modified = models.DateTimeField("date/time modified", auto_now=True)
 
     def __str__(self):
         return '{title}'.format(**self.__dict__)
