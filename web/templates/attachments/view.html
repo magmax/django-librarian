@@ -1,0 +1,62 @@
+{% extends "logged.html" %}
+{% load i18n %}
+{% load attachments %}
+
+{% block title %}{% trans "View attachment"%}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <h1>{{ attachment.description }}
+      <small>{{ attachment.filename }}</small>
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <dl class="dl-horizontal">
+        <dt>{% trans "Description" %}</dt><dd>{{ attachment.description }}</dd>
+        <dt>{% trans "File size" %}</dt><dd>{{ attachment.size|filesizeformat }}</dd>
+        <dt>{% trans "Mimetype" %}</dt><dd>{{ attachment.mimetype }}</dd>
+        <dt>{% trans "Checksum" %}</dt><dd>{{ attachment.checksum }}</dd>
+      </dl>
+      <dl class="dl-horizontal">
+        {% if view.request.user.is_staff %}
+        <dt>{% trans "Storage backend" %}</dt><dd>{{ attachment.backend }}</dd>
+        <dt>{% trans "Is public" %}</dt><dd>{{ attachment.is_public }}</dd>
+        <dt>{% trans "IP address" %}</dt><dd>{{ attachment.ip_address }}</dd>
+        <dt>{% trans "Creator" %}</dt><dd>{{ attachment.creator }}</dd>
+        <dt>{% trans "Created" %}</dt><dd>{{ attachment.created }}</dd>
+        <dt>{% trans "Modified" %}</dt><dd>{{ attachment.modified }}</dd>
+      </dl>
+      {% endif %}
+    </div>
+    <div class="col-md-2 col-md-offset-2">
+      <p>
+        <a href="{% get_download_url attachment %}" alt="{% trans 'download' %}">
+          <button  class="btn btn-lg btn-primary">
+            <span class="glyphicon glyphicon-download-alt"></span>
+          </button>
+        </a>
+      </p>
+      {% if view.request.user.is_staff %}
+      <p>
+        <a href="{% get_edit_url attachment %}" alt="{% trans 'edit' %}">
+          <button  class="btn btn-lg btn-primary">
+            <span class="glyphicon glyphicon-edit"></span>
+          </button>
+        </a>
+      </p>
+      <p>
+        <a href="{% get_delete_url attachment %}" alt="{% trans 'delete' %}">
+          <button  class="btn btn-lg btn-primary">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </a>
+      </p>
+      {% endif %}
+</ul>
+</div>
+</div>
+</div>
+
+{% endblock %}

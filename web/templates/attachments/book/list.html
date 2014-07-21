@@ -9,7 +9,7 @@
       <td>{{ attachment.filename }}</td>
       <td>{{ attachment.mimetype }}</td>
       <td width="10px">
-        <a href="{% url 'book_detail' book.pk %}" alt="{% trans 'view' %}">
+        <a href="{% get_view_url attachment %}" alt="{% trans 'view' %}">
           <button  class="btn">
             <span class="glyphicon glyphicon-eye-open"></span>
           </button>
