@@ -1,0 +1,39 @@
+{% extends "logged.html"%}
+
+{% block title %}django-files demosite{% endblock %}
+
+
+{% block content %}
+
+{% load attachments %}
+
+<p>{{ request }}</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <form method="POST" action="{% url 'create_book' %}" class="form-horizontal" >
+        {% csrf_token %}
+
+        {% for field in form %}
+        {%   if field.is_hidden %}
+        <div>{{ field }}</div>
+        {%   else %}
+        <div class="form-group {% if field.errors %} has-error {% endif %}">
+          {{ field.label_tag }} {{ field }}
+          {% for error in field.errors %}
+          <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        </div>
+        {%   endif %}
+        {% endfor %}
+        <div>
+          <input type="submit" class="btn btn-primary btn-block"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

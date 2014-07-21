@@ -41,6 +41,13 @@
               {% endif %}
             </dl>
           </div>
+          <div class="col-md-1">
+            <a href="{% url 'book_detail' book.pk %}" alt="view">
+              <button  class="btn">
+                <span class="glyphicon glyphicon-cloud-upload"></span>
+              </button>
+            </a>
+          </div>
         </div>
         {% if book.description %}
         <div class="row">

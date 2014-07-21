@@ -1,0 +1,17 @@
+{% extends "logged.html"%}
+
+{% block title %}django-files demosite{% endblock %}
+
+
+{% block content %}
+
+{% load attachments %}
+
+<div class="container">
+
+  {% render_attachment_form for book %}
+
+</div>
+
+
+{% endblock %}

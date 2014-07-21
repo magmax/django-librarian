@@ -10,9 +10,15 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r"^$",
-        view=login_required(views.BookListView.as_view(),
-                            login_url='/accounts/login/'),
+        view=views.BookListView.as_view(),
         name="home"),
+    url(r'^book/add/$',
+        view=views.BookCreateView.as_view(),
+        name='create_book'),
+    url(r'^book/attach/(?P<pk>\d+)$',
+        view=views.BookDetailView.as_view(),
+        name='book_detail'),
+
     url(r'^accounts/login/$',
         'django.contrib.auth.views.login',
         {'template_name': 'login.html'},

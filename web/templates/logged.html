@@ -13,11 +13,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Librarian</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Librarian</a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li {% if view.request.path == '/' %}class="active"{% endif %}>
+          <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li {% if view.request.path == '/book/add/' %}class="active"{% endif %}>
+          <a href="{% url 'create_book' %}">Add</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li class="pull-right"><a href="{% url 'logout' %}">Log out</a></li>
@@ -25,4 +30,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}
