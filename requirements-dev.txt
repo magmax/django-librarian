@@ -9,3 +9,8 @@ pexpect >= 3.2
 releaseme
 wheel
 factory_boy
+
+pytest >= 2.6.1
+pytest-cov >= 1.7.0
+pytest-xdist >= 1.10
+pytest-django >= 2.6.2

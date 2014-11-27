@@ -71,7 +71,7 @@ class Book(models.Model):
     modified = models.DateTimeField("date/time modified", auto_now=True)
 
     def __str__(self):
-        return '{title}'.format(**self.__dict__)
+        return self.title
 
 
 @receiver(pre_save, sender=Book)

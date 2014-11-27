@@ -22,6 +22,8 @@
       <dl class="dl-horizontal">
         {% if view.request.user.is_staff %}
         <dt>{% trans "Storage backend" %}</dt><dd>{{ attachment.backend }}</dd>
+        <dt>{% trans "Storage id" %}</dt><dd>{{ attachment.id }}</dd>
+        <dt>{% trans "Storage slug" %}</dt><dd>{{ attachment.slug }}</dd>
         <dt>{% trans "Is public" %}</dt><dd>{{ attachment.is_public }}</dd>
         <dt>{% trans "IP address" %}</dt><dd>{{ attachment.ip_address }}</dd>
         <dt>{% trans "Creator" %}</dt><dd>{{ attachment.creator }}</dd>

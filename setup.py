@@ -29,7 +29,9 @@ setup(name='django-librarian',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        'django >= 1.6',
-        'django-files >= 1.1',
+          'django >= 1.6',
+          'django-files >= 1.1',
+          # Non free for commercial software
+          'django-suit == 0.2.12',
       ],
       )
