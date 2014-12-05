@@ -92,3 +92,46 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Librarian',
+    'MENU_ICONS': {
+        'auth': 'icon-lock',
+        'sites': 'icon-leaf',
+        'librarian': 'icon-book',
+        'files': 'icon-file',
+    },
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/tmp/librarian.log',
+        },
+        'stdout': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['stdout'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'librarian': {
+            'handlers': ['stdout'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'root': {
+            'handlers': ['stdout'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
