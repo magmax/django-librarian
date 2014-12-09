@@ -93,6 +93,10 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
 
+#Admin
+LOGIN_REDIRECT_URL = '/'
+
+# SUIT
 SUIT_CONFIG = {
     'ADMIN_NAME': 'Librarian',
     'MENU_ICONS': {
@@ -103,6 +107,7 @@ SUIT_CONFIG = {
     },
 }
 
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
